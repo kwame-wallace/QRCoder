@@ -14,6 +14,8 @@ namespace QRCoder
         /// </summary>
         public SvgQRCode() { }
         public SvgQRCode(QRCodeData data) : base(data) { }
+        public int Rx { get; set; }
+        public int Ry { get; set; }
 
         public string GetGraphic(int pixelsPerModule)
         {
@@ -59,7 +61,7 @@ namespace QRCoder
                     {
                         var x = (xi - offset) * pixelsPerModule;
                         var y = (yi - offset) * pixelsPerModule;
-                        svgFile.AppendLine($@"<rect x=""{CleanSvgVal(x)}"" y=""{CleanSvgVal(y)}"" width=""{CleanSvgVal(pixelsPerModule)}"" height=""{CleanSvgVal(pixelsPerModule)}"" fill=""{darkColorHex}"" />");
+                        svgFile.AppendLine($@"<rect x=""{CleanSvgVal(x)}"" y=""{CleanSvgVal(y)}"" width=""{CleanSvgVal(pixelsPerModule)}"" height=""{CleanSvgVal(pixelsPerModule)}"" fill=""{darkColorHex}"" rx=""{Rx}"" ry=""{Ry}"" />");
                     }
                 }
             }
